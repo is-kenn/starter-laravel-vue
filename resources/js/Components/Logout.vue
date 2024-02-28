@@ -10,8 +10,5 @@ async function logout() {
 </script>
 
 <template>
-    <form @submit.prevent="logout">
-        <button>Logout</button>
-    </form>
+    <button @click="logout">Logout</button>
 </template>
-

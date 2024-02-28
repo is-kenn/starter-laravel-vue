@@ -7,7 +7,9 @@ import Logout from './Components/Logout.vue';
         <ul>
             <li><router-link to='/'>Go to Home</router-link></li>
             <li><router-link to='/about'>Go to About</router-link></li>
-            <Logout />
+            <li>
+                <Logout />
+            </li>
         </ul>
     </nav>
     <hr>
