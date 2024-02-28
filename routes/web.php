@@ -16,9 +16,13 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/{vue_route?}', function () {
-    return view('app');
-})->where('vue_route', '[\/\w\.-]*');
+require __DIR__.'/auth.php';
+
+Route::middleware('auth')->group(function () {
+    Route::get('/{vue_route?}', function () {
+        return view('app');
+    })->where('vue_route', '[\/\w\.-]*');
+});
 
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
@@ -29,5 +33,3 @@ Route::get('/{vue_route?}', function () {
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
-
-require __DIR__.'/auth.php';
