@@ -12,11 +12,27 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
-    @vite('resources/js/main.js')
+    @if (Auth::guard('web')->check())
+        @vite('resources/js/main.js')
+    @elseif (Auth::guard('admin')->check())
+        @vite('resources/js/admin.js')
+    @endif
 </head>
 
 <body class="font-sans antialiased">
-    <div id="app"></div>
+    <div id="app">
+        <nav>
+            <ul>
+                <li><router-link to='/'>Go to Home</router-link></li>
+                <li><router-link to='/about'>Go to About</router-link></li>
+                <li>
+                    <Logout />
+                </li>
+            </ul>
+        </nav>
+        <hr>
+        <router-view />
+    </div>
 </body>
 
 </html>

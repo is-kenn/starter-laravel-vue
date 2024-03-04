@@ -18,7 +18,7 @@ use Inertia\Inertia;
 
 require __DIR__.'/auth.php';
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth:web,admin')->group(function () {
     Route::get('/{vue_route?}', function () {
         return view('app');
     })->where('vue_route', '[\/\w\.-]*');
